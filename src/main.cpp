@@ -4,6 +4,8 @@
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BMP280.h>
 
+
+
 // we have to overwite the BPM280 address
 #define BMP280_ADDRESS 0x76
 Adafruit_BMP280 bmp; // I2C
