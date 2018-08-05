@@ -1,10 +1,34 @@
 #include <Arduino.h>
 #include <Wire.h>
 #include <SPI.h>
+
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BMP280.h>
+#include <DHT.h>
+#define DHTPIN 2     // what pin we're connected to
+#define DHTTYPE DHT22   // DHT 22  (AM2302)
+DHT dht(DHTPIN, DHTTYPE); //// Initialize DHT sensor for normal 16mhz Arduino
+float dhtHum;  //Stores humidity value
+float dhtTemp; //Stores temperature value
 
 
+void setupDHT() {
+  dht.begin();
+}
+
+void readDHT() {
+
+  dhtHum = dht.readHumidity();
+  dhtTemp= dht.readTemperature();
+
+  Serial.print("Temperature = ");
+  Serial.print(dhtTemp);
+  Serial.println(" *C");
+
+  Serial.print("Humidity = ");
+  Serial.print(dhtHum);
+  Serial.println(" %");
+}
 
 // we have to overwite the BPM280 address
 #define BMP280_ADDRESS 0x76
@@ -37,11 +61,13 @@ void readBMP() {
 void setup() {
   Serial.begin(9600);
   setupBMP();
+  setupDHT();
 }
 
 void loop() {
 
   readBMP();
+  readDHT();
 
 
   Serial.println();
