@@ -22,7 +22,6 @@ void loop() {
   readDHT();
   readLightIntensity();
 
-
-  Serial.println(bmpPressure);
+  Serial.println();
   delay(2000);
 }
