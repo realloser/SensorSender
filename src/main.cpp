@@ -5,12 +5,7 @@
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BMP280.h>
 
-#include <DHT.h>
-#define DHTPIN 2     // what pin we're connected to
-#define DHTTYPE DHT22   // DHT 22  (AM2302)
-DHT dht(DHTPIN, DHTTYPE); //// Initialize DHT sensor for normal 16mhz Arduino
-float dhtHum;  //Stores humidity value
-float dhtTemp; //Stores temperature value
+#include "my_dht.h"
 
 #define LIGHTSENSOR_PIN A0
 //#define INPUT_VOLTAGE 504 // 5.04 volt on the uno multiplied by then since map() works with long
@@ -28,24 +23,6 @@ void readLightIntensity(){
   lightIntensityMappedValue = map(lightIntensityMeasured, 0, INPUT_VOLTAGE, 0, 500); // normalize the sensor reading
   Serial.print("Lightintensity = ");
   Serial.println(lightIntensityMappedValue);
-}
-
-void setupDHT() {
-  dht.begin();
-}
-
-void readDHT() {
-
-  dhtHum = dht.readHumidity();
-  dhtTemp= dht.readTemperature();
-
-  Serial.print("Temperature = ");
-  Serial.print(dhtTemp);
-  Serial.println(" *C");
-
-  Serial.print("Humidity = ");
-  Serial.print(dhtHum);
-  Serial.println(" %");
 }
 
 // we have to overwite the BPM280 address
