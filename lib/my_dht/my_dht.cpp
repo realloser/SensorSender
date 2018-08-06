@@ -1,12 +1,10 @@
-// #include <Arduino.h>
-// #include <Wire.h>
-// #include <SPI.h>
 #include <my_dht.h>
 
 #include <DHT.h>
-DHT dht(DHTPIN, DHTTYPE); //// Initialize DHT sensor for normal 16mhz Arduino
-float dhtHum;  //Stores humidity value
-float dhtTemp; //Stores temperature value
+DHT dht(DHTPIN, DHTTYPE); // Initialize DHT sensor for normal 16mhz Arduino
+
+float dhtHum = 0;  //Stores humidity value
+float dhtTemp = 0; //Stores temperature value
 
 void setupDHT() {
   dht.begin();
