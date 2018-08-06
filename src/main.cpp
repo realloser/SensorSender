@@ -10,7 +10,8 @@
 #include <bmp280.h>
 #include <send_data.h>
 
-#define NODE_HASH "B9FC4586"
+// Use on of the given hashes: https://github.com/realloser/SensorHash
+#define NODE_HASH "FA24C2A3"
 
 void setup()
 {
@@ -32,7 +33,7 @@ void loop()
 
   // multiply the readings by factor 100 so we can just send the int.
   // node name, message index, primary temp, humidity, light intensity, voltage if any, secondary temp, air pressure
-  sprintf(transmissionMessage, "%s|%i|%i|%i|%i|%i|%i|%i", NODE_HASH, messageIndex, (int)(dhtTemp * 100), (int)(dhtHum * 100), lightIntensity, -1, (int)(bmpTemperatur * 100), (int)(bmpPressure * 100));
+  sprintf(transmissionMessage, "%s|%i|%i|%i|%i|%i|%i|%lu", NODE_HASH, messageIndex, (int)(dhtTemp * 100), (int)(dhtHum * 100), lightIntensity, -1, (int)(bmpTemperatur * 100), (unsigned long)(bmpPressure * 100));
   sendData();
 
   Serial.println();
