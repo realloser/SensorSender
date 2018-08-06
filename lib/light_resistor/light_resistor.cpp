@@ -2,6 +2,7 @@
 
 int lightIntensityMeasured; // variable to store the value coming from the sensor
 int lightIntensity; 
+int inputVoltage = INPUT_VOLTAGE;
 
 void setupLightIntesnity(){
   // nothing to do
@@ -11,7 +12,7 @@ void setupLightIntesnity(){
 
 void readLightIntensity(){
   lightIntensityMeasured = analogRead(LIGHTSENSOR_PIN); // read the value from the sensor
-  lightIntensity = map(lightIntensityMeasured, 0, INPUT_VOLTAGE, 0, 500); // normalize the sensor reading
+  lightIntensity = map(lightIntensityMeasured, 0, inputVoltage, 0, 500); // normalize the sensor reading
   Serial.print("Lightintensity = ");
   Serial.println(lightIntensity);
 }
