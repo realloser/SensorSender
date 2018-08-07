@@ -1,5 +1,5 @@
 // provides an asyncronuous delay check
 
-void setupDelayAsync(int timespanMilliseconds);
+void setupDelayAsync(unsigned long timespanMilliseconds);
 
 bool delayCheck();
