@@ -7,8 +7,8 @@ unsigned long interval; // interval at which to read (milliseconds)
 unsigned long previousMillis = 0; // will store last delay was updated
 unsigned long currentMillis;
 
-void setupDelayAsync(unsigned long timespanMilliseconds) {
-  interval = timespanMilliseconds;
+void setupDelayAsync(int timespanSeconds) {
+  interval = 1000ul * timespanSeconds;
 }
 
 bool delayCheck()
