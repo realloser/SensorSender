@@ -10,6 +10,7 @@
 #include <bmp280.h>
 #include <send_data.h>
 #include <receive_data.h>
+#include <delayAsync.h>
 
 #define RECIVER true
 
@@ -19,6 +20,7 @@
 void setup()
 {
   Serial.begin(9600);
+  setupDelayAsync(2 * 60 * 1000);
   setupBMP();
   setupDHT();
   inputVoltage = 503; // 423 volt on the nano on the breadboard
@@ -31,35 +33,6 @@ void setup()
   {
     setupSendData();
     sendPing();
-  }
-}
-
-// constants won't change:
-const long interval = 10 * 1000; // interval at which to read (milliseconds)
-// Generally, you should use "unsigned long" for variables that hold time
-// The value will quickly become too large for an int to store
-unsigned long previousMillis = 0; // will store last delay was updated
-unsigned long currentMillis;
-
-bool delayCheck()
-{
-  // check to see if the delay has passed; that is, if the difference
-  // between the current time and last time
-  currentMillis = millis();
-// Serial.print("Current Mills: "); Serial.println(currentMillis);
-// Serial.print("Previous Mills: "); Serial.println(previousMillis);
-
-  if (currentMillis - previousMillis >= interval)
-  {
-    Serial.println("Delay passed");
-
-    // save the last time delay
-    previousMillis = currentMillis;
-    return true;
-  }
-  else
-  {
-    return false;
   }
 }
 
