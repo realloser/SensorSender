@@ -1,0 +1,4 @@
+
+void setupEthernet();
+
+void loopEthernet();
