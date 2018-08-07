@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include <delayAsync.h>
 
-long interval; // interval at which to read (milliseconds)
+unsigned long interval; // interval at which to read (milliseconds)
 // Generally, you should use "unsigned long" for variables that hold time
 // The value will quickly become too large for an int to store
 unsigned long previousMillis = 0; // will store last delay was updated
