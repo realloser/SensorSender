@@ -1,5 +1,5 @@
+#include <Arduino.h>
 #include <delayAsync.h>
-
 
 long interval; // interval at which to read (milliseconds)
 // Generally, you should use "unsigned long" for variables that hold time
