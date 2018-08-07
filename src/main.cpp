@@ -35,6 +35,8 @@ void setup()
     setupSendData();
     sendPing();
   }
+
+  readAllSensors();
 }
 
 void readAllSensors() {
