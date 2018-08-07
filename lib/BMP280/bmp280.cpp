@@ -12,14 +12,16 @@ Adafruit_BMP280 bmp; // I2C
 float bmpTemperatur = 0;
 float bmpPressure = 0;
 
-void setupBMP()
+bool setupBMP()
 {
     if (!bmp.begin(BMP280_ADDRESS))
     {
         Serial.println("Could not find a valid BMP280 sensor, check wiring!");
         bmpTemperatur = -1;
         bmpPressure = -1;
+        return false;
     }
+    return true;
 }
 
 void readBMP()
