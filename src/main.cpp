@@ -11,6 +11,7 @@
 #include <send_data.h>
 #include <receive_data.h>
 #include <delayAsync.h>
+#include <ethernet.h>
 
 #define RECIVER true
 
@@ -36,14 +37,18 @@ void setup()
   }
 }
 
-void readLoop()
-{
-  if (delayCheck())
-  {
+void readAllSensors() {
     readBMP();
     readDHT();
     readLightIntensity();
     Serial.println();
+}
+
+void readLoop()
+{
+  if (delayCheck())
+  {
+    readAllSensors();
   }
 }
 
