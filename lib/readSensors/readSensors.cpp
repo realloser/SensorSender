@@ -9,15 +9,16 @@ bool bmpOK;
 
 void setupReadSensors()
 {
-  bmpOK = setupBMP();
-  setupDHT();
-  inputVoltage = 503; // 423 volt on the nano on the breadboard
-  setupLightIntensity();
+    bmpOK = setupBMP();
+    setupDHT();
+    inputVoltage = 503; // 423 volt on the nano on the breadboard
+    setupLightIntensity();
 }
 
-
-void readAllSensors() {
-    if (bmpOK) readBMP();
+void readAllSensors()
+{
+    if (bmpOK)
+        readBMP();
 
     readDHT();
     readLightIntensity();
@@ -38,4 +39,3 @@ struct SensorData getSensorData()
 
     return data;
 }
-
