@@ -56,7 +56,7 @@ void readSensors()
   // node name, message index, primary temp, humidity, light intensity, voltage if any, secondary temp, air pressure
   sprintf(transmissionMessage, "%s|%i|%i|%i|%i|%i|%i|%lu",
           NODE_HASH, messageIndex++, (int)(data.primaryTemperature * 100), (int)(data.humidity * 100), data.lightIntensity,
-          -1, (int)(data.secondaryTemperature * 100), (unsigned long)(data.pressure * 100));
+          (int)(data.batteryVoltage * 100), (int)(data.secondaryTemperature * 100), (unsigned long)(data.pressure * 100));
 
   Serial.println();
   Serial.print("Concatenated: ");
