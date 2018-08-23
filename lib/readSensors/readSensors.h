@@ -9,7 +9,7 @@ struct SensorData
     float secondaryTemperature;
     float humidity;
     float pressure;
-    float lightIntensity;
+    int lightIntensity;
     float batteryVoltage;
 };
 

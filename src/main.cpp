@@ -58,7 +58,7 @@ void readSensors()
           NODE_HASH, messageIndex++, (int)(data.primaryTemperature * 100), (int)(data.humidity * 100), data.lightIntensity,
           -1, (int)(data.secondaryTemperature * 100), (unsigned long)(data.pressure * 100));
 
-  Serial.println();
+    Serial.println();
   Serial.print("Concatenated: ");
   Serial.println(transmissionMessage);
   Serial.println();
