@@ -17,6 +17,8 @@ void setup()
   setupReadSensors();
 
   readSensors();
+
+  sendPing(false);
 }
 
 void readLoop()
@@ -62,4 +64,6 @@ void readSensors()
   Serial.print("Concatenated: ");
   Serial.println(transmissionMessage);
   Serial.println();
+
+  sendData();
 }
