@@ -1,7 +1,4 @@
 
-// Use on of the given hashes: https://github.com/realloser/SensorHash
-#define NODE_HASH "FA24C2A3"
-
 struct SensorData
 {
     char node[10];
@@ -13,6 +10,6 @@ struct SensorData
     float batteryVoltage;
 };
 
-void setupReadSensors();
+void setupReadSensors(char *nodeName);
 
 struct SensorData getSensorData();

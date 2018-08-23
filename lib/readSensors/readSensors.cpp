@@ -6,9 +6,11 @@
 #include <send_data.h>
 
 bool bmpOK;
+char *theNodeName;
 
-void setupReadSensors()
+void setupReadSensors(char *nodeName)
 {
+    theNodeName = nodeName;
     bmpOK = setupBMP();
     setupDHT();
     // 423 volt on the nano on the breadboard
@@ -31,7 +33,7 @@ struct SensorData getSensorData()
     readAllSensors();
 
     struct SensorData data;
-    strcpy(data.node, NODE_HASH);
+    strcpy(data.node, theNodeName);
     data.primaryTemperature = dhtTemp;
     data.humidity = dhtHum;
     data.lightIntensity = lightIntensity;

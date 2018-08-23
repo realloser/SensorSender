@@ -1,11 +1,12 @@
 
 #include <Arduino.h>
-#include "main.h"
-
 #include <delayAsync.h>
 #include <readSensors.h>
 #include <send_data.h>
 
+#include "main.h"
+
+char *nodeName = NODE_HASH;
 void setup()
 {
   Serial.begin(9600);
@@ -14,11 +15,11 @@ void setup()
 
   setupDelayAsync(2 * 60);
 
-  setupReadSensors();
+  setupReadSensors(nodeName);
 
   readSensors();
 
-  sendPing(false);
+  sendPing(false, nodeName);
 }
 
 void readLoop()
@@ -57,7 +58,7 @@ void readSensors()
   // multiply the readings by factor 100 so we can just send the int.
   // node name, message index, primary temp, humidity, light intensity, voltage if any, secondary temp, air pressure
   sprintf(transmissionMessage, "%s|%i|%i|%i|%i|%i|%i|%lu",
-          NODE_HASH, messageIndex++, (int)(data.primaryTemperature * 100), (int)(data.humidity * 100), data.lightIntensity,
+          data.node, messageIndex++, (int)(data.primaryTemperature * 100), (int)(data.humidity * 100), data.lightIntensity,
           (int)(data.batteryVoltage * 100), (int)(data.secondaryTemperature * 100), (unsigned long)(data.pressure * 100));
 
   Serial.println();

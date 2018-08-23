@@ -23,14 +23,14 @@ void sendData()
     Serial.println(transmissionMessage);
 }
 
-void sendPing(bool force)
+void sendPing(bool force, char *nodeName)
 {
     if (!force && pingSend)
     {
         return;
     }
 
-    sprintf(transmissionMessage, "%s-ping", NODE_HASH);
+    sprintf(transmissionMessage, "%s-ping", nodeName);
 
     sendData();
     Serial.println("Send ping");
