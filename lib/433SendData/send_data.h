@@ -5,7 +5,6 @@
 #define NODE_HASH "DEFINE_NODE_HASH"
 
 extern char transmissionMessage[50];
-extern int messageIndex;
 
 void setupSendData();
 

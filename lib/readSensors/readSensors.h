@@ -2,13 +2,14 @@
 // Use on of the given hashes: https://github.com/realloser/SensorHash
 #define NODE_HASH "FA24C2A3"
 
-struct SensorData {
+struct SensorData
+{
     char node[10];
-    float primaryTemperatur;
-    float secondaryTemperatur;
+    float primaryTemperature;
+    float secondaryTemperature;
     float humidity;
     float pressure;
-    float lightIntesity;
+    float lightIntensity;
     float batteryVoltage;
 };
 

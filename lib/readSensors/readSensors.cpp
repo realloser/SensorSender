@@ -31,10 +31,10 @@ struct SensorData getSensorData()
 
     struct SensorData data;
     strcpy(data.node, NODE_HASH);
-    data.primaryTemperatur = dhtTemp;
+    data.primaryTemperature = dhtTemp;
     data.humidity = dhtHum;
-    data.lightIntesity = lightIntensity;
-    data.secondaryTemperatur = bmpOK ? bmpTemperatur : -1;
+    data.lightIntensity = lightIntensity;
+    data.secondaryTemperature = bmpOK ? bmpTemperature : -1;
     data.pressure = bmpOK ? bmpPressure : -1;
 
     return data;

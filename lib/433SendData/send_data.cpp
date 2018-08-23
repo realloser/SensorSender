@@ -7,8 +7,6 @@
 char transmissionMessage[50];
 bool pingSend;
 
-int messageIndex;
-
 void setupSendData()
 {
     // Initialise the IO and ISR
@@ -23,7 +21,6 @@ void sendData()
     vw_wait_tx(); // Wait until the whole message is gone
     Serial.print("Send data: ");
     Serial.println(transmissionMessage);
-    messageIndex++;
 }
 
 void sendPing(bool force = false)
