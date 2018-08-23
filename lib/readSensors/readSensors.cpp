@@ -11,7 +11,8 @@ void setupReadSensors()
 {
     bmpOK = setupBMP();
     setupDHT();
-    inputVoltage = 503; // 423 volt on the nano on the breadboard
+    // 423 volt on the nano on the breadboard
+    inputVoltage = 423; 
     setupLightIntensity();
 }
 
@@ -36,6 +37,7 @@ struct SensorData getSensorData()
     data.lightIntensity = lightIntensity;
     data.secondaryTemperature = bmpOK ? bmpTemperature : -1;
     data.pressure = bmpOK ? bmpPressure : -1;
+    data.batteryVoltage = -1;
 
     return data;
 }
