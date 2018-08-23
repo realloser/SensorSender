@@ -36,6 +36,7 @@ void loop()
   readLoop();
 }
 
+unsigned int messageIndex;
 void readSensors()
 {
   struct SensorData data = getSensorData();
@@ -46,4 +47,15 @@ void readSensors()
   Serial.print("Barometric pressure: "); Serial.println(data.pressure);
   Serial.print("Battery voltage: "); Serial.println(data.batteryVoltage);
   Serial.println();
+
+      // multiply the readings by factor 100 so we can just send the int.
+    // node name, message index, primary temp, humidity, light intensity, voltage if any, secondary temp, air pressure
+    sprintf(transmissionMessage, "%s|%i|%i|%i|%i|%i|%i|%lu", 
+      NODE_HASH, messageIndex++, (int)(data.primaryTemperatur * 100), (int)(data.humidity * 100), data.lightIntesity,
+      -1, (int)(data.secondaryTemperatur * 100), (unsigned long)(data.pressure * 100));
+
+    Serial.println();
+    Serial.print("Concatenated: ");
+    Serial.println(transmissionMessage);
+    Serial.println();
 }
