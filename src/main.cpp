@@ -4,23 +4,21 @@
 
 #include <delayAsync.h>
 #include <readSensors.h>
-#include <receive_data.h>
-#include <ethernetSender.h>
+#include <send_data.h>
 
 
 void setup()
 {
   Serial.begin(9600);
 
+  setupSendData();
+
   setupDelayAsync(2 * 60);
 
   setupReadSensors();
 
-  setupReceiveData();
-
   readSensors();
 
-  setupEthernet();
 }
 
 void readLoop()
@@ -28,16 +26,14 @@ void readLoop()
   if (delayCheck())
   {
     readSensors();
+
+    sendData();
   }
 }
 
 void loop()
 {
   readLoop();
-
-  loopReceiveData();
-
-  loopEthernet();
 }
 
 void readSensors()
