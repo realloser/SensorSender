@@ -10,4 +10,4 @@ void setupSendData();
 
 void sendData();
 
-void sendPing(bool force = false);
+void sendPing(bool force);

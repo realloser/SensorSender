@@ -23,7 +23,7 @@ void sendData()
     Serial.println(transmissionMessage);
 }
 
-void sendPing(bool force = false)
+void sendPing(bool force)
 {
     if (!force && pingSend)
     {
